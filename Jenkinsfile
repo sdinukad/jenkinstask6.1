@@ -4,10 +4,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the code using pip...'
-                // Build automation tool: pip
-                // Pip is the default package manager for Python. 
-                // It can be used to install project dependencies and manage the build process of Python projects.
+                echo 'Building the code using Maven...'
+                // Build automation tool: Maven
+                // Maven is a build automation tool used primarily for Java projects. 
+                // It helps compile, test, and package the code and manage dependencies.
             }
         }
 
@@ -34,6 +34,20 @@ pipeline {
                 // Security scanning tool: OWASP ZAP (Zed Attack Proxy)
                 // OWASP ZAP is a security testing tool that helps identify vulnerabilities in web applications by actively scanning for common security issues 
             }
+            post {
+                success {
+                    mail to: "dinukadangampala@gmail.com",
+                    subject: "Security Scan Staus Email",
+                    body: "Security scan using OWASP ZAP was completed and successful!"
+                    attachLog: True
+                }
+                failure {
+                    mail to: "dinukadangampala@gmail.com",
+                    subject: "Security Scan Staus Email",
+                    body: "Security scan using OWASP ZAP has failed!"
+                    attachLog: True
+                }
+            }
         }
 
         stage('Deploy to Staging') {
@@ -51,19 +65,27 @@ pipeline {
                 // Selenium is a popular open-source framework for automating web browsers. 
                 // It enables running automated tests on web applications across different browsers and platforms.
             }
+            post {
+                success {
+                    mail to: "dinukadangampala@gmail.com",
+                    subject: "Integration Test Staus Email",
+                    body: "Integration tests on staging using Selenium was successful!"
+                    attachLog: True
+                    
+                }
+                failure {
+                    mail to: "dinukadangampala@gmail.com",
+                    subject: "Integration Test Staus Email",
+                    body: "Integration tests on staging using Selenium has failed. Please check the logs for info"
+                    attachLog: True 
+                }
+            }
         }
 
         stage('Deploy to Production') {
             steps {
                 echo 'Deploying to production server on AWS CLI...'
                 // Deployment tool: AWS CLI (Command Line Interface)
-            }
-            post {
-                success {
-                    mail to: "dinukadangampala@gmail.com",
-                    subject: "Build Staus Email",
-                    body: "Build was successful!"
-                }
             }
         }
     }
