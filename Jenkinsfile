@@ -60,7 +60,7 @@ pipeline {
 
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Running integration tests on stagin using Seleniumg...'
+                echo 'Running integration tests on staging using Seleniumg...'
                 // Integration test tool: Selenium
                 // Selenium is a popular open-source framework for automating web browsers. 
                 // It enables running automated tests on web applications across different browsers and platforms.
