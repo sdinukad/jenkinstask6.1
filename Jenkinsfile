@@ -36,16 +36,16 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "dinukadangampala@gmail.com",
-                    subject: "Security Scan Staus Email",
-                    body: "Security scan using OWASP ZAP was completed and successful!"
-                    attachLog: True
+                    emailext body: 'Security scan using OWASP ZAP was completed and successful!',
+                        subject: 'Security Scan Staus Email',
+                        to: 'dinukadangampala@gmail.com',
+                        attachLog: True
                 }
                 failure {
-                    mail to: "dinukadangampala@gmail.com",
-                    subject: "Security Scan Staus Email",
-                    body: "Security scan using OWASP ZAP has failed!"
-                    attachLog: True
+                    emailext body: 'Security scan using OWASP ZAP has failed!',
+                        subject: 'Security Scan Staus Email',
+                        to: 'dinukadangampala@gmail.com',
+                        attachLog: True
                 }
             }
         }
@@ -67,17 +67,17 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "dinukadangampala@gmail.com",
-                    subject: "Integration Test Staus Email",
-                    body: "Integration tests on staging using Selenium was successful!"
-                    attachLog: True
+                    emailext body: 'Integration tests on staging using Selenium was successful!',
+                        subject: 'Integration Test Staus Email',
+                        to: 'dinukadangampala@gmail.com',
+                        attachLog: True
                     
                 }
                 failure {
-                    mail to: "dinukadangampala@gmail.com",
-                    subject: "Integration Test Staus Email",
-                    body: "Integration tests on staging using Selenium has failed. Please check the logs for info"
-                    attachLog: True 
+                    emailext body: 'Integration tests on staging using Selenium has failed. Please check the logs for info',
+                        subject: 'Integration Test Staus Email',
+                        to: 'dinukadangampala@gmail.com',
+                        attachLog: True
                 }
             }
         }
