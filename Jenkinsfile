@@ -78,7 +78,7 @@ pipeline {
                         subject: 'Integration Test Staus Email',
                         to: 'dinukadangampala@gmail.com',
                         attachLog: 'true'
-                        //comment
+                        //comment to test new commit and jenkins
                 }
             }
         }
