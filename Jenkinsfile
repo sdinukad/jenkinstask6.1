@@ -79,7 +79,7 @@ pipeline {
                         to: 'dinukadangampala@gmail.com',
                         attachLog: 'true'
                         //comment to test new commit and jenkins
-                        //comment 2 to test if working
+                        // demo video
                 }
             }
         }
