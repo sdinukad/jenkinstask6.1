@@ -39,13 +39,13 @@ pipeline {
                     emailext body: 'Security scan using OWASP ZAP was completed and successful!',
                         subject: 'Security Scan Staus Email',
                         to: 'dinukadangampala@gmail.com',
-                        attachLog: True
+                        attachLog: 'true'
                 }
                 failure {
                     emailext body: 'Security scan using OWASP ZAP has failed!',
                         subject: 'Security Scan Staus Email',
                         to: 'dinukadangampala@gmail.com',
-                        attachLog: True
+                        attachLog: 'true'
                 }
             }
         }
@@ -70,14 +70,14 @@ pipeline {
                     emailext body: 'Integration tests on staging using Selenium was successful!',
                         subject: 'Integration Test Staus Email',
                         to: 'dinukadangampala@gmail.com',
-                        attachLog: True
+                        attachLog: 'true'
                     
                 }
                 failure {
                     emailext body: 'Integration tests on staging using Selenium has failed. Please check the logs for info',
                         subject: 'Integration Test Staus Email',
                         to: 'dinukadangampala@gmail.com',
-                        attachLog: True
+                        attachLog: 'true'
                 }
             }
         }
